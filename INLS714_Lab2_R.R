@@ -35,16 +35,28 @@ library(ggplot2)
 train <- BigMart_Train
 #ggplot2 is an R library for visualizations train.
 ggplot(train, aes(Item_Visibility, Item_MRP)) + geom_point() + scale_x_continuous("Item Visibility", breaks = seq(0,0.35,0.05))+ scale_y_continuous("Item MRP", breaks = seq(0,270,by = 30))+ theme_bw()
+#aes = Aesthetic mappings describe how variables in the data are mapped to visual properties (aesthetics) of geoms. Aesthetic mappings can be set in ggplot() and in individual layers.
+#aes(x = mpg, y = wt)
+#> Aesthetic mapping: 
+#> * `x` -> `mpg`
+#> * `y` -> `wt`
+#aes(mpg, wt)
+#> Aesthetic mapping: 
+#> * `x` -> `mpg`
+#> * `y` -> `wt`
 
 ggplot(train, aes(Item_Visibility, Item_MRP)) + geom_point(aes(color = Item_Type)) + 
   scale_x_continuous("Item Visibility", breaks = seq(0,0.35,0.05))+
   scale_y_continuous("Item MRP", breaks = seq(0,270,by = 30))+
   theme_bw() + labs(title="Scatterplot")
+#seq( ,by )number: increment of the sequence.
+
 
 ggplot(train, aes(Item_Visibility, Item_MRP)) + geom_point(aes(color = Item_Type)) + 
   scale_x_continuous("Item Visibility", breaks = seq(0,0.35,0.05))+
   scale_y_continuous("Item MRP", breaks = seq(0,270,by = 30))+ 
   theme_bw() + labs(title="Scatterplot") + facet_wrap( ~ Item_Type)
+#facet_wrap() wraps a 1d sequence of panels into 2d
 
 ggplot(train, aes(Item_MRP)) + geom_histogram(binwidth = 2)+
   scale_x_continuous("Item MRP", breaks = seq(0,270,by = 30))+
